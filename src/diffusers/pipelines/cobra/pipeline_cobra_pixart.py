@@ -593,9 +593,9 @@ class CobraPixArtAlphaPipeline(DiffusionPipeline):
 
         device = self._execution_device
 
-        prompt_embeds = torch.load('/mnt/workspace/zhuangjunhao/PixArt_RAG/causaldit_train/prompt_tensor/prompt_embeds.pt').unsqueeze(0).repeat(batch_size * num_images_per_prompt, 1, 1)
+        prompt_embeds = torch.load('./prompt_tensor/prompt_embeds.pt').unsqueeze(0).repeat(batch_size * num_images_per_prompt, 1, 1)
         prompt_embeds = prompt_embeds.to(dtype=self.transformer.dtype, device=device)
-        prompt_attention_mask = torch.load('/mnt/workspace/zhuangjunhao/PixArt_RAG/causaldit_train/prompt_tensor/prompt_attention_mask.pt').unsqueeze(0).repeat(batch_size * num_images_per_prompt,1)
+        prompt_attention_mask = torch.load('./prompt_tensor/prompt_attention_mask.pt').unsqueeze(0).repeat(batch_size * num_images_per_prompt,1)
         prompt_attention_mask = prompt_attention_mask.to(dtype=self.transformer.dtype, device=device)
 
         # here `guidance_scale` is defined analog to the guidance weight `w` of equation (2)
